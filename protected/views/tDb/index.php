@@ -25,7 +25,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
         'id',
         array(
             'header'=>'Nr. și data înregistrării documentului',
-            'value'=>'nl2br($data->nr_reg)."<br>".nl2br($data->date_reg)',
+            'value'=>'nl2br($data->nr_reg)."<br>".nl2br(Yii::app()->locale->dateFormatter->formatDateTime($data->date_reg, "long", false))',
             'type'=>'raw',
         ),
         'elab',
@@ -39,15 +39,29 @@ $this->widget('zii.widgets.grid.CGridView', array(
             'value'=>'$data->content',
             'visible'=>!Yii::app()->user->isGuest,
         ),
+        array(
+            'header'=>'Executor',
+            'value'=>'($data->persResponsabil)?$data->persResponsabil->persGrad->md." ".$data->persResponsabil->fullname."<br />".$data->persResponsabil->contacts:""',
+            'type'=>'raw',
+        ),
 
-        'responsabil',
         array(
             'header'=>'Nr. act / Data răspuns<br />Tipul răspunsului',
-            'value'=>'($data->responsType)?$data->nr_respons ." din ".$data->date_respons."<br />".$data->responsType->name:""',
+            'value'=>'($data->responsType)?$data->nr_respons ." din ".Yii::app()->locale->dateFormatter->formatDateTime($data->date_respons, "long", false)."<br />".$data->responsType->name:""',
             'visible'=>!Yii::app()->user->isGuest,
             'type'=>'raw',
         ),
-        'dossier'
+
+        array(
+            'name'=>'dossier',
+            'value'=>'$data->dossier',
+            'visible'=>!Yii::app()->user->isGuest,
+        ),
+        array(
+            'class'=>'CButtonColumn',
+            'template'=>'{view}{update}',
+            'visible'=>!Yii::app()->user->isGuest,
+        )
 //nl2br($data->nr_respons)." din ". nl2br($data->date_respons)."<br />".
         //'nr_respons',
         //'respons_type',

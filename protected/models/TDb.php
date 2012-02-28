@@ -78,6 +78,7 @@ class TDb extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
             'responsType'=>array(self::BELONGS_TO, 'Tipraspuns', 'respons_type'),
+            'persResponsabil'=>array(self::BELONGS_TO, 'Responsabil', 'responsabil'),
 		);
 	}
 
