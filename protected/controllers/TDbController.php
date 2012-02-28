@@ -127,7 +127,15 @@ class TDbController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('TDb');
+		$dataProvider=new CActiveDataProvider('TDb', array(
+            'criteria'=>array(
+                'condition'=>'YEAR(date_add)=2012',
+                'order'=>'id DESC',
+            ),
+            'pagination'=>array(
+                'pageSize'=>30,
+            ),
+        ));
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
