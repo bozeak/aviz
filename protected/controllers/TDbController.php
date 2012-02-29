@@ -35,7 +35,7 @@ class TDbController extends Controller
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
+				'actions'=>array('admin','delete','test'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -136,8 +136,15 @@ class TDbController extends Controller
                 'pageSize'=>30,
             ),
         ));
+
+        $model = new TDb('filt');
+        $model->unsetAttributes();
+        if(isset($_GET['TDb']))
+            $model->attributes=$_GET['TDb'];
+
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
+            'model'=>$model,
 		));
 	}
 

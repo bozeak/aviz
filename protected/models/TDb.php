@@ -122,8 +122,11 @@ class TDb extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
+        $criteria->condition = 'YEAR(date_add)='.date('Y');
+        $criteria->order = 'id DESC';
+
 		$criteria->compare('id',$this->id);
-		$criteria->compare('subdiv',$this->subdiv,true);
+		$criteria->compare('subdiv',$this->subdiv,false);
 		$criteria->compare('nr_reg',$this->nr_reg,true);
 		$criteria->compare('date_reg',$this->date_reg,true);
 		$criteria->compare('date_doc',$this->date_doc,true);
@@ -133,7 +136,7 @@ class TDb extends CActiveRecord
 		$criteria->compare('nr_cadastr',$this->nr_cadastr,true);
 		$criteria->compare('tel',$this->tel,true);
 		$criteria->compare('content',$this->content,true);
-		$criteria->compare('responsabil',$this->responsabil,true);
+		$criteria->compare('responsabil',$this->responsabil,false);
 		$criteria->compare('get_exec',$this->get_exec,true);
 		$criteria->compare('nr_respons',$this->nr_respons,true);
 		$criteria->compare('date_respons',$this->date_respons,true);
@@ -145,6 +148,7 @@ class TDb extends CActiveRecord
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
+
 		));
 	}
 }
