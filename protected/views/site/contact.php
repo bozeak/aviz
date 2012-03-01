@@ -19,7 +19,7 @@ $this->breadcrumbs=array(
 If you have business inquiries or other questions, please fill out the following form to contact us. Thank you.
 </p>
 
-<div class="form">
+<div class="span12">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'contact-form',

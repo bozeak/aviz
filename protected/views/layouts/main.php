@@ -3,29 +3,24 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="language" content="en" />
-
-	<!-- blueprint CSS framework -->
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/screen.css" media="screen, projection" />
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/print.css" media="print" />
-	<!--[if lt IE 8]>
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/ie.css" media="screen, projection" />
-	<![endif]-->
-
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
-
+    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/bootstrap.css" />
+    <style>
+        body {
+            padding-top: 60px;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/bootstrap-responsive.css" />
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
 
 <body>
 
-<div class="container" id="page">
+    <div class="navbar navbar-fixed-top">
+	    <div class="navbar-inner">
+            <div class="container">
+		<a class="brand" href="<?php echo Yii::app()->request->baseUrl; ?>"><?php echo CHtml::encode(Yii::app()->name); ?></a>
 
-	<div id="header">
-		<div id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></div>
-	</div><!-- header -->
-
-	<div id="mainmenu">
+	    <div class="nav-collapse">
 		<?php $this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
 				array('label'=>'Home', 'url'=>array('/')),
@@ -33,11 +28,20 @@
 				array('label'=>'Contact', 'url'=>array('/site/contact')),
 				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
+                array('htmlOption'=>array('class'=>'LAST')),
                 array('label'=>'Adăugare', 'url'=>array('/tDb/create'), 'visible'=>!Yii::app()->user->isGuest),
                 array('label'=>'Manage', 'url'=>array('/tDb/admin'), 'visible'=>!Yii::app()->user->isGuest)
 			),
+            'htmlOptions'=>array(
+                'class'=>'nav',
+            ),
 		)); ?>
-	</div><!-- mainmenu -->
+	        </div><!-- mainmenu -->
+        </div>
+    </div>
+    </div>
+
+    <div class="container">
 	<?php if(isset($this->breadcrumbs)):?>
 		<?php $this->widget('zii.widgets.CBreadcrumbs', array(
 			'links'=>$this->breadcrumbs,
@@ -46,15 +50,16 @@
 
 	<?php echo $content; ?>
 
-	<div class="clear"></div>
 
-	<div id="footer">
+
+	<footer>
+        <p>
 		Copyright &copy; <?php echo date('Y'); ?> by My Company.<br/>
 		All Rights Reserved.<br/>
-		<?php echo Yii::powered(); ?>
-	</div><!-- footer -->
+		<?php echo Yii::powered(); ?></p>
+	</footer><!-- footer -->
+    </div>
 
-</div><!-- page -->
-
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/bootstrap.js" type="text/javascript"></script>
 </body>
 </html>
