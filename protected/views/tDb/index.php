@@ -34,6 +34,14 @@ $this->widget('zii.widgets.grid.CGridView', array(
     'id'=>'tdb-grid',
     'dataProvider'=>$model->search(),
     'enableSorting'=>false,
+    'pager'=>array(
+        'class'=>'MyPager',
+        'header'=>false,
+        'htmlOptions'=>array(
+            'class'=>'',
+            'id'=>'',
+        ),
+    ),
     'htmlOptions'=>array(
         'class'=>'table table-condensed',
     ),
