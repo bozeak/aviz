@@ -20,7 +20,7 @@
     <div class="navbar navbar-fixed-top">
 	    <div class="navbar-inner">
             <div class="container">
-		<a class="brand" href="<?php echo Yii::app()->request->baseUrl; ?>"><?php echo CHtml::encode(Yii::app()->name); ?></a>
+		<a class="brand" href="/"><?php echo CHtml::encode(Yii::app()->name); ?></a>
 
 	    <div class="nav-collapse">
 		<?php $this->widget('zii.widgets.CMenu',array(

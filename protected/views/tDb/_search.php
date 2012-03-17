@@ -13,9 +13,9 @@
     <tr>
         <td> <?php echo $form->label($model, 'subdiv'); ?>
             <?php
-            echo $form->dropDownList($model, 'subdiv', CHtml::listData(Subdiv::model()->findAll(), 'id', 'name'),
+            echo $form->dropDownList($model, 'subdiv',array_merge(array('0' => 'Alegeți'), CHtml::listData(Subdiv::model()->findAll(), 'id', 'name')),
                 array(
-                    'prompt' => 'Alegeti',
+                    
                     'ajax' => array(
                         'type' => 'POST',
                         'url' => CController::createUrl('tDb/Dynamicresp'),
@@ -25,9 +25,7 @@
             ); ?></td>
         <td>
             <?php echo $form->label($model, 'responsabil'); ?>
-            <?php echo $form->DropDownList($model, 'responsabil',
-                CHtml::listData(Responsabil::model()->findAllByAttributes(array('subdiv' => $model->subdiv)), 'id', 'fullname'),
-                array('prompt' => 'Alegeti')); ?>
+            <?php echo $form->DropDownList($model, 'responsabil',array_merge(array('0' => 'Alegeți'), CHtml::listData(Responsabil::model()->findAllByAttributes(array('subdiv' => $model->subdiv)), 'id', 'fullname'))); ?>
         </td>
     </tr>
 
