@@ -193,11 +193,10 @@ class TDbController extends Controller
         $data = Responsabil::model()->findAll('subdiv=:parent_id', array(':parent_id' => (int) $_POST['TDb']['subdiv']));
 
         $data = CHtml::listData($data, 'id', 'fullname');
-		echo CHtml::tag('option',
-		                   array('value'=>""),CHtml::encode('Select State'),true);
+        echo CHtml::tag('option', array('value'=>""), 'Select State',true);
 		
         foreach ($data as $id => $value) {
-            echo CHtml::tag('option', array('value' => $id), CHtml::encode($value), true);
+            echo CHtml::tag('option', array('value' => $id), $value, true);
         }
     }
 }
