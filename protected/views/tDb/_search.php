@@ -15,7 +15,7 @@
             <?php
             echo $form->dropDownList($model, 'subdiv', CHtml::listData(Subdiv::model()->findAll(), 'id', 'name'),
                 array(
-                    'prompt' => 'Alegeti',
+                    'prompt' => 'Alegeți',
                     'ajax' => array(
                         'type' => 'POST',
                         'url' => CController::createUrl('tDb/Dynamicresp'),
@@ -27,7 +27,7 @@
             <?php echo $form->label($model, 'responsabil'); ?>
             <?php echo $form->DropDownList($model, 'responsabil',
                 CHtml::listData(Responsabil::model()->findAllByAttributes(array('subdiv' => $model->subdiv)), 'id', 'fullname'),
-                array('prompt' => 'Alegeti')); ?>
+                array('prompt' => 'Alegeți')); ?>
         </td>
     </tr>
 

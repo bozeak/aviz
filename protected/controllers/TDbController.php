@@ -27,11 +27,11 @@ class TDbController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view','dynamicresp'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','dynamicresp'),
+				'actions'=>array('create','update'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -193,6 +193,7 @@ class TDbController extends Controller
         $data = Responsabil::model()->findAll('subdiv=:parent_id', array(':parent_id' => (int) $_POST['TDb']['subdiv']));
 
         $data = CHtml::listData($data, 'id', 'fullname');
+        echo CHtml::tag('option', array('value' => ""), 'Alegeți', true);
         foreach ($data as $id => $value) {
             echo CHtml::tag('option', array('value' => $id), CHtml::encode($value), true);
         }
